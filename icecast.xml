@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<icecast>
+    <location>SelvaFM</location>
+    <admin>admin@selvafm.com</admin>
+
+    <limits>
+        <clients>100</clients>
+        <sources>2</sources>
+        <queue-size>524288</queue-size>
+        <client-timeout>30</client-timeout>
+        <header-timeout>15</header-timeout>
+        <source-timeout>10</source-timeout>
+        <burst-on-connect>1</burst-on-connect>
+        <burst-size>65535</burst-size>
+    </limits>
+
+    <authentication>
+        <source-password>000999Pp</source-password>
+        <relay-password>relpass</relay-password>
+        <admin-user>admin</admin-user>
+        <admin-password>000999Pp</admin-password>
+    </authentication>
+
+    <hostname>0.0.0.0</hostname>
+
+    <listen-socket>
+        <port>8010</port>
+    </listen-socket>
+
+    <mount>
+        <mount-name>/stream</mount-name>
+    </mount>
+
+    <logging>
+        <accesslog>-</accesslog>
+        <errorlog>-</errorlog>
+        <loglevel>3</loglevel>
+    </logging>
+
+    <fileserve>1</fileserve>
+</icecast>
