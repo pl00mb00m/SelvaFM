@@ -1,0 +1,39 @@
+services:
+  # Web server service
+  - type: web
+    name: selvafm-web
+    env: node
+    plan: free
+    buildCommand: npm install
+    startCommand: node server.js
+    envVars:
+      - key: PORT
+        value: 10000
+      - key: ICECAST_HOST
+        sync: false
+      - key: ICECAST_PORT
+        value: 8010
+      - key: ICECAST_ADMIN_USER
+        sync: false
+      - key: ICECAST_ADMIN_PASSWORD
+        sync: false
+      - key: NODE_ENV
+        value: production
+    healthCheckPath: /api/health
+    
+  # Icecast streaming service
+  - type: web
+    name: selvafm-icecast
+    env: docker
+    dockerfilePath: ./Dockerfile.icecast
+    dockerContext: .
+    plan: free
+    envVars:
+      - key: ICECAST_ADMIN_USER
+        sync: false
+      - key: ICECAST_ADMIN_PASSWORD
+        sync: false
+      - key: ICECAST_SOURCE_PASSWORD
+        sync: false
+      - key: ICECAST_RELAY_PASSWORD
+        sync: false
